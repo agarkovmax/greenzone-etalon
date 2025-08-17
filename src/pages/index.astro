@@ -21,3 +21,16 @@ import Widget from '../components/Widget.astro';
   </section>
   <Widget />
 </Layout>
+<script is:client>
+  // Вибрация
+  if ('vibrate' in navigator) {
+    if (Math.random() > 0.5) {
+      navigator.vibrate([100, 150, 100]); // Пример
+    }
+  }
+
+  // SEO Time Machine (простая версия)
+  function showForecast() {
+    alert('Через 3 месяца ваш трафик вырастет на 52%');
+  }
+</script>
