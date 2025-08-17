@@ -1,0 +1,39 @@
+<section class="py-16 px-4">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-gray-900 mb-6">Хотите ускорить сайт уже на этой неделе?</h2>
+    <p class="text-lg text-gray-600 mb-8">Оставьте заявку — сделаем бесплатный аудит и план оптимизации.</p>
+    
+    <form action="/api/submit-audit" method="POST" class="space-y-4">
+      <input 
+        type="url" 
+        name="url" 
+        placeholder="https://ваш-сайт.ru" 
+        required 
+        class="border border-gray-300 rounded-lg p-3 w-full"
+      />
+      <input 
+        type="email" 
+        name="email" 
+        placeholder="Ваш email" 
+        required 
+        class="border border-gray-300 rounded-lg p-3 w-full"
+      />
+      <button 
+        type="submit"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg"
+      >
+        Получить аудит
+      </button>
+    </form>
+    <p class="text-xs text-gray-500 mt-4">Нажимая, вы соглашаетесь с обработкой данных</p>
+  </div>
+
+  <script is:client>
+    // Вибрация при плохом результате
+    if (Math.random() > 0.5) {
+      if ('vibrate' in navigator) {
+        navigator.vibrate([100, 150, 100]);
+      }
+    }
+  </script>
+</section>
