@@ -1,0 +1,31 @@
+# Разрешаем все боты
+User-agent: *
+Allow: /
+Crawl-delay: 5
+
+# Карта сайта
+Sitemap: https://greenzonesite.ru/sitemap.xml
+
+# Исключения
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /thank-you.html
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Google Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Яндекс: главное зеркало
+Host: greenzonesite.ru
