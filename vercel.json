@@ -1,4 +1,9 @@
 {
   "version": 2,
-  "framework": "@astrojs/vercel"
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/astro"
+    }
+  ]
 }
