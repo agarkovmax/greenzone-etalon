@@ -1,91 +1,23 @@
 ---
-// Главная страница
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import AuditForm from '../components/AuditForm.astro';
+import CaseCard from '../components/CaseCard.astro';
+import Widget from '../components/Widget.astro';
 ---
 
 <Layout title="Ускорение загрузки сайта — GreenZone">
-  <div class="min-h-screen bg-white">
-    <!-- Hero -->
-    <section class="bg-gradient-to-b from-green-50 to-white py-16 px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Ускорение загрузки сайта до 100 баллов за 7 дней. <br>
-        <span class="text-green-600">Или не будем брать денег.</span>
-      </h1>
-      <p class="text-xl text-gray-600 mb-8">
-        Доводим Core Web Vitals до стандарта: LCP ≤ 1.8s, CLS ≤ 0.03, INP ≤ 200ms. Оплата — только за результат.
-      </p>
-      <div class="space-x-4">
-        <a href="/audit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg">
-          Проверить мой сайт бесплатно
-        </a>
-        <a href="#how-it-works" class="border border-gray-300 hover:border-green-500 text-gray-700 font-semibold py-3 px-6 rounded-lg">
-          Как это работает
-        </a>
+  <Hero />
+  <AuditForm />
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12">Кейсы: реальные «до/после»</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <CaseCard title="Лендинг" before="47" after="99" result="С ~4.8с до ~1.2с. Конверсия +38%." />
+        <CaseCard title="Корпоративный сайт" before="58" after="100" result="CWV в норме, рост органики и заявок." />
+        <CaseCard title="Интернет-магазин" before="65" after="98" result="Оптимизация бандла, кеш, изображения." />
       </div>
-    </section>
-
-    <!-- Калькулятор "Скорость = деньги" -->
-    <section class="py-16 px-4 bg-gray-50">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">Скорость = деньги</h2>
-        <p class="text-lg text-gray-600 mb-6">Сколько вы теряете каждый месяц?</p>
-        <div class="bg-white p-6 rounded-xl shadow-md">
-          <input 
-            type="number" 
-            placeholder="Ваш трафик (посетителей/мес)" 
-            class="border border-gray-300 rounded-lg p-3 w-full mb-4"
-            id="traffic"
-          />
-          <div class="text-2xl font-bold text-red-600" id="loss">
-            Вы теряете: 0 ₽/мес
-          </div>
-        </div>
-        <p class="text-sm text-gray-500 mt-4">* На основе: 40% отказов × 500 ₽ за лид</p>
-      </div>
-    </section>
-
-    <!-- Форма аудита -->
-    <section class="py-16 px-4">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">Хотите ускорить сайт уже на этой неделе?</h2>
-        <p class="text-lg text-gray-600 mb-8">Оставьте заявку — сделаем бесплатный аудит и план оптимизации.</p>
-        
-        <form action="/api/submit-audit" method="POST" class="space-y-4">
-          <input 
-            type="url" 
-            name="url" 
-            placeholder="https://ваш-сайт.ru" 
-            required 
-            class="border border-gray-300 rounded-lg p-3 w-full"
-          />
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Ваш email" 
-            required 
-            class="border border-gray-300 rounded-lg p-3 w-full"
-          />
-          <button 
-            type="submit"
-            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg"
-          >
-            Получить аудит
-          </button>
-        </form>
-        <p class="text-xs text-gray-500 mt-4">Нажимая, вы соглашаетесь с обработкой данных</p>
-      </div>
-    </section>
-  </div>
-
-  <script is:client>
-    // Калькулятор
-    const trafficInput = document.getElementById('traffic');
-    const lossOutput = document.getElementById('loss');
-    
-    trafficInput.addEventListener('input', () => {
-      const traffic = parseInt(trafficInput.value) || 0;
-      const loss = Math.round(traffic * 0.4 * 500);
-      lossOutput.textContent = `Вы теряете: ${loss.toLocaleString()} ₽/мес`;
-    });
-  </script>
+    </div>
+  </section>
+  <Widget />
 </Layout>
